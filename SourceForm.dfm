@@ -1,0 +1,393 @@
+object frmSource: TfrmSource
+  Left = 0
+  Top = 0
+  BorderIcons = []
+  Caption = 'frmSource'
+  ClientHeight = 454
+  ClientWidth = 559
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  OldCreateOrder = True
+  Visible = True
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlButtons: TPanel
+    Left = 0
+    Top = 416
+    Width = 559
+    Height = 38
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = clSilver
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitTop = 210
+    ExplicitWidth = 495
+    object AdvSmoothButton1: TAdvSmoothButton
+      AlignWithMargins = True
+      Left = 475
+      Top = 2
+      Width = 82
+      Height = 34
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Align = alRight
+      Status.Caption = '0'
+      Status.Appearance.Fill.Color = clRed
+      Status.Appearance.Fill.ColorMirror = clNone
+      Status.Appearance.Fill.ColorMirrorTo = clNone
+      Status.Appearance.Fill.GradientType = gtSolid
+      Status.Appearance.Fill.GradientMirrorType = gtSolid
+      Status.Appearance.Fill.BorderColor = clGray
+      Status.Appearance.Fill.Rounding = 0
+      Status.Appearance.Fill.ShadowOffset = 0
+      Status.Appearance.Fill.Glow = gmNone
+      Status.Appearance.Font.Charset = DEFAULT_CHARSET
+      Status.Appearance.Font.Color = clWhite
+      Status.Appearance.Font.Height = -11
+      Status.Appearance.Font.Name = 'Tahoma'
+      Status.Appearance.Font.Style = []
+      Caption = 'Close'
+      TabOrder = 0
+      Version = '2.0.2.0'
+      OnClick = AdvSmoothButton1Click
+      ExplicitLeft = 411
+    end
+    object btnSettings: TVrMediaButton
+      Left = 8
+      Top = 5
+      Width = 40
+      Height = 29
+      ButtonType = btEject
+      TabOrder = 1
+    end
+    object btnPlay: TVrMediaButton
+      Left = 48
+      Top = 5
+      Width = 40
+      Height = 29
+      ButtonType = btPlay
+      Enabled = False
+      TabOrder = 2
+      OnClick = btnPlayClick
+    end
+    object btnPause: TVrMediaButton
+      Left = 88
+      Top = 5
+      Width = 40
+      Height = 29
+      TabOrder = 3
+      OnClick = btnPauseClick
+    end
+    object btnClearLog: TVrMediaButton
+      Left = 128
+      Top = 5
+      Width = 40
+      Height = 29
+      ButtonType = btPower
+      TabOrder = 4
+      OnClick = btnClearLogClick
+    end
+  end
+  object pnlStatus: TAdvPanel
+    Left = 0
+    Top = 0
+    Width = 559
+    Height = 416
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
+    Align = alClient
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    Color = clSilver
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    UseDockManager = True
+    Version = '2.3.0.1'
+    BorderColor = clGray
+    Caption.Color = 15722471
+    Caption.ColorTo = 11176072
+    Caption.Font.Charset = DEFAULT_CHARSET
+    Caption.Font.Color = clWindowText
+    Caption.Font.Height = -11
+    Caption.Font.Name = 'Tahoma'
+    Caption.Font.Style = []
+    Caption.GradientDirection = gdVertical
+    Caption.Height = 14
+    Caption.Indent = 2
+    Caption.ShadeLight = 255
+    CollapsColor = clHighlight
+    CollapsDelay = 0
+    ColorTo = 14540253
+    ColorMirror = 14540253
+    ColorMirrorTo = clSilver
+    ShadowColor = clBlack
+    ShadowOffset = 0
+    StatusBar.BorderColor = clNone
+    StatusBar.BorderStyle = bsSingle
+    StatusBar.Font.Charset = DEFAULT_CHARSET
+    StatusBar.Font.Color = clBlack
+    StatusBar.Font.Height = -11
+    StatusBar.Font.Name = 'Tahoma'
+    StatusBar.Font.Style = []
+    StatusBar.Color = 12560553
+    StatusBar.ColorTo = 14602191
+    ExplicitWidth = 495
+    ExplicitHeight = 210
+    DesignSize = (
+      555
+      412)
+    FullHeight = 337
+    object Label1: TLabel
+      Left = 22
+      Top = 25
+      Width = 81
+      Height = 13
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Alignment = taRightJustify
+      Caption = 'Sentence Count:'
+    end
+    object Label2: TLabel
+      Left = 27
+      Top = 190
+      Width = 75
+      Height = 13
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Alignment = taRightJustify
+      Caption = 'Recent History:'
+    end
+    object Label3: TLabel
+      Left = 354
+      Top = 24
+      Width = 56
+      Height = 13
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      Caption = 'Connected:'
+    end
+    object Label4: TLabel
+      Left = 47
+      Top = 64
+      Width = 56
+      Height = 13
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Alignment = taRightJustify
+      Caption = 'Payload ID:'
+    end
+    object Label5: TLabel
+      Left = 384
+      Top = 65
+      Width = 26
+      Height = 13
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      Caption = 'Time:'
+    end
+    object Label6: TLabel
+      Left = 60
+      Top = 105
+      Width = 43
+      Height = 13
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Alignment = taRightJustify
+      Caption = 'Latitude:'
+    end
+    object Label7: TLabel
+      Left = 360
+      Top = 105
+      Width = 51
+      Height = 13
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      Caption = 'Longitude:'
+    end
+    object Label8: TLabel
+      Left = 61
+      Top = 145
+      Width = 41
+      Height = 13
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Alignment = taRightJustify
+      Caption = 'Altitude:'
+    end
+    object pnlLines: TPanel
+      Left = 120
+      Top = 17
+      Width = 150
+      Height = 28
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      BevelOuter = bvLowered
+      Color = clSilver
+      ParentBackground = False
+      TabOrder = 0
+    end
+    object pnlConnected: TPanel
+      Left = 423
+      Top = 17
+      Width = 121
+      Height = 28
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Anchors = [akTop, akRight]
+      BevelOuter = bvLowered
+      Color = clSilver
+      ParentBackground = False
+      TabOrder = 1
+    end
+    object Panel1: TPanel
+      Left = 119
+      Top = 181
+      Width = 425
+      Height = 218
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      BevelOuter = bvLowered
+      Color = clSilver
+      ParentBackground = False
+      TabOrder = 2
+      object ListBox1: TListBox
+        Left = 1
+        Top = 1
+        Width = 423
+        Height = 216
+        Align = alClient
+        BorderStyle = bsNone
+        Color = clSilver
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Courier New'
+        Font.Style = []
+        ItemHeight = 14
+        ParentFont = False
+        TabOrder = 0
+      end
+    end
+    object pnlPayloadID: TPanel
+      Left = 120
+      Top = 57
+      Width = 150
+      Height = 28
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      BevelOuter = bvLowered
+      Color = clSilver
+      ParentBackground = False
+      TabOrder = 3
+    end
+    object pnlTime: TPanel
+      Left = 422
+      Top = 58
+      Width = 120
+      Height = 28
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Anchors = [akTop, akRight]
+      BevelOuter = bvLowered
+      Color = clSilver
+      ParentBackground = False
+      TabOrder = 4
+    end
+    object pnlLatitude: TPanel
+      Left = 121
+      Top = 98
+      Width = 149
+      Height = 28
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      BevelOuter = bvLowered
+      Color = clSilver
+      ParentBackground = False
+      TabOrder = 5
+    end
+    object pnlLongitude: TPanel
+      Left = 422
+      Top = 98
+      Width = 121
+      Height = 28
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      Anchors = [akTop, akRight]
+      BevelOuter = bvLowered
+      Color = clSilver
+      ParentBackground = False
+      TabOrder = 6
+    end
+    object pnlAltitude: TPanel
+      Left = 121
+      Top = 138
+      Width = 149
+      Height = 28
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      BevelOuter = bvLowered
+      Color = clSilver
+      ParentBackground = False
+      TabOrder = 7
+    end
+  end
+end
