@@ -4,11 +4,12 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Source, StdCtrls, GatewaySource, SourceForm, GatewaySourceForm, DummySourceForm,
+  Dialogs, Source, StdCtrls,
+  SourceForm, GatewaySourceForm, DLFLDigiSourceForm, SerialSourceForm,
   ExtCtrls, AdvSmoothButton, GIFImg, AdvPanel, AdvSmoothStatusIndicator, AdvGDIP, HABDB;
 
 type
-  TSourceType = (stDummy, stGateway, stDLFLDigi, stSerial, stHabitat, stHABModem);
+  TSourceType = (stNone, stGateway, stDLFLDigi, stSerial, stHabitat, stHABModem);
 
   THABSource = class
     public
@@ -63,11 +64,13 @@ begin
     HABSource := THABSource.Create;
     with HABSource do begin
         SourceType := NewSourceType;
-        //   TSourceType = (stDummy, stGateway, stDLFLDigi, stSerial, stHabitat, stHABModem);
-        if SourceType = stDummy then begin
-            Form := TfrmDummySource.Create(nil);
-        end else if SourceType = stGateway then begin
+        //   TSourceType = (sNone, stGateway, stDLFLDigi, stSerial, stHabitat, stHABModem);
+        if SourceType = stGateway then begin
             Form := TfrmGatewaySource.Create(nil);
+        end else if SourceType = stDLFLDigi then begin
+            Form := TfrmDLFLDigiSource.Create(nil);
+        end else if SourceType = stSerial then begin
+            Form := TfrmSerialSource.Create(nil);
         end else begin
             Form := nil;
         end;
@@ -99,10 +102,12 @@ begin
                 Appearance.Font.Height := -24;
                 Appearance.Font.Color := clWhite;
                 AutoSize := True;
-                if SourceType = stDummy then begin
-                    Caption := 'D';
-                end else if SourceType = stGateway then begin
+                if SourceType = stGateway then begin
                     Caption := 'L';
+                end else if SourceType = stDLFLDigi then begin
+                    Caption := 'D';
+                end else if SourceType = stSerial then begin
+                    Caption := 'S';
                 end;
                 Tag := LastID;
                 OnClick := DataSourceClick;
@@ -117,8 +122,9 @@ procedure TfrmMain.CreateTelemetrySources;
 begin
     if HABSources.Count = 0 then begin
         HABDB := THABDB.Create();
-        AddHABSource(stDummy);
+        AddHABSource(stDlFlDigi);
         AddHABSource(stGateway);
+        AddHABSource(stSerial);
         (*
             // History
             Sources[i].Lines := TStringList.Create;

@@ -1,14 +1,14 @@
-unit DummySourceForm;
+unit SerialSourceForm;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SourceForm, StdCtrls, AdvPanel, VrControls, VrNavigator,
-  AdvSmoothButton, ExtCtrls, DummySource;
+  AdvSmoothButton, ExtCtrls, SerialSource;
 
 type
-  TfrmDummySource = class(TfrmSource)
+  TfrmSerialSource = class(TfrmSource)
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -20,12 +20,16 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmDummySource.FormCreate(Sender: TObject);
+procedure TfrmSerialSource.FormCreate(Sender: TObject);
 var
     ID: Integer;
 begin
+    inherited;
+    Settings.Add('SourceName', 'Serial Port');
+    Settings.Add('Port', 'COM4');
+    Settings.Add('Baud', 57600);
     ID := 0;
-    Source := TDummySource.Create(ID, Callback, Settings);
+    Source := TSerialSource.Create(ID, Callback, Settings);
 end;
 
 end.

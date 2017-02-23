@@ -60,14 +60,16 @@
 			<DCCReference Include="GatewaySourceSettings.pas">
 				<Form>frmGatewaySourceSettings</Form>
 			</DCCReference>
-			<DCCReference Include="HABRx\DummySource.pas"/>
-			<DCCReference Include="DummySourceForm.pas">
-				<Form>frmDummySource</Form>
-			</DCCReference>
 			<DCCReference Include="HABRx\Miscellaneous.pas"/>
 			<DCCReference Include="HABRx\HABDB.pas"/>
 			<DCCReference Include="HABRx\SocketSource.pas"/>
 			<DCCReference Include="HABRx\SerialSource.pas"/>
+			<DCCReference Include="DLFLDigiSourceForm.pas">
+				<Form>frmDLFLDigiSource</Form>
+			</DCCReference>
+			<DCCReference Include="SerialSourceForm.pas">
+				<Form>frmSerialSource</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

@@ -10,7 +10,7 @@ uses
 type
   TfrmGatewaySource = class(TfrmSource)
     procedure FormCreate(Sender: TObject);
-    procedure VrMediaButton1Click(Sender: TObject);
+    procedure btnSettingsClick(Sender: TObject);
   private
     { Private declarations }
   protected
@@ -22,6 +22,17 @@ implementation
 
 {$R *.dfm}
 
+procedure TfrmGatewaySource.btnSettingsClick(Sender: TObject);
+var
+    SourceSettingsForm: TfrmGatewaySourceSettings;
+begin
+    SourceSettingsForm := TfrmGatewaySourceSettings.Create(nil);
+    if SourceSettingsForm.ShowModal = mrOK then begin
+        // Save Gateway Settings
+    end;
+    SourceSettingsForm.Free;
+end;
+
 procedure TfrmGatewaySource.FormCreate(Sender: TObject);
 var
     ID: Integer;
@@ -32,17 +43,6 @@ begin
     Settings.Add('Port', 6004);
     ID := 0;
     Source := TGatewaySource.Create(ID, Callback, Settings);
-end;
-
-procedure TfrmGatewaySource.VrMediaButton1Click(Sender: TObject);
-var
-    SourceSettingsForm: TfrmGatewaySourceSettings;
-begin
-    SourceSettingsForm := TfrmGatewaySourceSettings.Create(nil);
-    if SourceSettingsForm.ShowModal = mrOK then begin
-        // Save Gateway Settings
-    end;
-    SourceSettingsForm.Free;
 end;
 
 end.
