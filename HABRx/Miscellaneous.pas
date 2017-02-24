@@ -42,7 +42,11 @@ begin
 
     Line := Copy(Line, 1, Position-1);
     try
-        Result := StrToFloat(Line);
+        if Copy(Line, 1, 1) = '"' then begin
+            Result := StrToFloat(Copy(Line, 2, Length(Line)-2));
+        end else begin
+            Result := StrToFloat(Line);
+        end;
     except
         Result := 0;
     end;
@@ -65,7 +69,13 @@ begin
 
     Line := Copy(Line, 1, Position-1);
 
-    Result := StrToIntDef(Line, 0);
+    if Copy(Line, 1, 1) = '"' then begin
+        Result := StrToIntDef(Copy(Line, 2, Length(Line)-2), 0);
+    end else begin
+        Result := StrToIntDef(Line, 0);
+    end;
+
+
 end;
 
 function GetString(var Line: String; Delimiter: String=','): String;

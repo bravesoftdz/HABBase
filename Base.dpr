@@ -18,7 +18,10 @@ uses
   DLFLDigiSourceForm in 'DLFLDigiSourceForm.pas' {frmDLFLDigiSource},
   LoRaSerialSourceForm in 'LoRaSerialSourceForm.pas' {frmLoRaSerialSource},
   LoRaSourceForm in 'LoRaSourceForm.pas' {frmLoRaSource},
-  LoRaSerialSource in 'HABRx\LoRaSerialSource.pas';
+  LoRaSerialSource in 'HABRx\LoRaSerialSource.pas',
+  WebSource in 'HABRx\WebSource.pas',
+  WebSourceForm in 'WebSourceForm.pas' {frmWebSource},
+  HabitatSourceForm in 'HabitatSourceForm.pas' {frmHabitatSource};
 
 {$R *.res}
 

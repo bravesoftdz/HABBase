@@ -74,6 +74,13 @@
 				<Form>frmLoRaSource</Form>
 			</DCCReference>
 			<DCCReference Include="HABRx\LoRaSerialSource.pas"/>
+			<DCCReference Include="HABRx\WebSource.pas"/>
+			<DCCReference Include="WebSourceForm.pas">
+				<Form>frmWebSource</Form>
+			</DCCReference>
+			<DCCReference Include="HabitatSourceForm.pas">
+				<Form>frmHabitatSource</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

@@ -6,10 +6,10 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Source, StdCtrls,
   SourceForm, LoRaGatewaySourceForm, DLFLDigiSourceForm, SerialSourceForm, LoRaSerialSourceForm,
-  ExtCtrls, AdvSmoothButton, GIFImg, AdvPanel, AdvSmoothStatusIndicator, AdvGDIP, HABDB;
+  HabitatSourceForm, ExtCtrls, AdvSmoothButton, GIFImg, AdvPanel, AdvSmoothStatusIndicator, AdvGDIP, HABDB;
 
 type
-  TSourceType = (stNone, stGateway, stDLFLDigi, stSerial, stHabitat, stHABModem);
+  TSourceType = (stNone, stGateway, stDLFLDigi, stSerial, stHabitat);
 
   THABSource = class
     public
@@ -64,13 +64,15 @@ begin
     HABSource := THABSource.Create;
     with HABSource do begin
         SourceType := NewSourceType;
-        //   TSourceType = (sNone, stGateway, stDLFLDigi, stSerial, stHabitat, stHABModem);
+        //   TSourceType = (sNone, stGateway, stDLFLDigi, stSerial, stHabitat);
         if SourceType = stGateway then begin
             Form := TfrmLoRaGatewaySource.Create(nil);
         end else if SourceType = stDLFLDigi then begin
             Form := TfrmDLFLDigiSource.Create(nil);
         end else if SourceType = stSerial then begin
             Form := TfrmLoRaSerialSource.Create(nil);
+        end else if SourceType = stHabitat then begin
+            Form := TfrmHabitatSource.Create(nil);
         end else begin
             Form := nil;
         end;
@@ -108,6 +110,8 @@ begin
                     Caption := 'D';
                 end else if SourceType = stSerial then begin
                     Caption := 'S';
+                end else if SourceType = stHabitat then begin
+                    Caption := 'H';
                 end;
                 Tag := LastID;
                 OnClick := DataSourceClick;
@@ -122,6 +126,7 @@ procedure TfrmMain.CreateTelemetrySources;
 begin
     if HABSources.Count = 0 then begin
         HABDB := THABDB.Create();
+        AddHABSource(stHabitat);
         AddHABSource(stDlFlDigi);
         AddHABSource(stGateway);
         AddHABSource(stSerial);
