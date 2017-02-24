@@ -43,7 +43,7 @@ type
   protected
     Source: TSource;
     Settings: TSettings;
-    procedure Callback(ID: Integer; Connected: Boolean; Line: String; Position: THABPosition);
+    procedure Callback(ID: Integer; Connected: Boolean; Line: String; Position: THABPosition); virtual;
   public
     { Public declarations }
     HABDB: THABDB;
@@ -77,17 +77,6 @@ begin
     // Connected part
     pnlConnected.Color := ConnectedColour(Connected);
 
-    // Raw line
-    if Line <> '' then begin
-        if HABDB = nil then begin
-            RecordCount := 0;
-        end else begin
-            RecordCount := HABDB.AddPosition(Position);
-        end;
-        ListBox1.ItemIndex := ListBox1.Items.Add(IntToStr(ID) + ': ' + Line);
-        pnlLines.Caption := IntToStr(RecordCount);
-    end;
-
     // Position
     if Position.InUse then begin
         pnlPayloadID.Caption := Position.PayloadID;
@@ -95,6 +84,13 @@ begin
         pnlLatitude.Caption := FormatFloat('0.00000', Position.Latitude);
         pnlLongitude.Caption := FormatFloat('0.00000', Position.Longitude);
         pnlAltitude.Caption := FormatFloat('0', Position.Altitude);
+        if HABDB = nil then begin
+            RecordCount := 0;
+        end else begin
+            RecordCount := HABDB.AddPosition(Position);
+        end;
+        ListBox1.ItemIndex := ListBox1.Items.Add(IntToStr(ID) + ': ' + Line);
+        pnlLines.Caption := IntToStr(RecordCount);
     end;
 end;
 

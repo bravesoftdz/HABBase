@@ -8,15 +8,23 @@ type
   TSettings = TDictionary<String, Variant>;
 
 type
+  TExtraFields = TDictionary<String, Variant>;
+
+type
+  TSignalValues = TDictionary<String, Variant>;
+
+type
   THABPosition = record
-    InUse:      Boolean;
-    Channel:    Integer;
-    PayloadID:  String;
-    Counter:    Integer;
-    TimeStamp:  TDateTime;
-    Latitude:   Double;
-    Longitude:  Double;
-    Altitude:   Double;
+    InUse:          Boolean;
+    Channel:        Integer;
+    PayloadID:      String;
+    Counter:        Integer;
+    TimeStamp:      TDateTime;
+    Latitude:       Double;
+    Longitude:      Double;
+    Altitude:       Double;
+    SignalValues:   TSignalValues;
+    ExtraFields:    TExtraFields;
   end;
 
 type
@@ -34,7 +42,7 @@ type
     SourceSettings: TSettings;
     procedure Execute; override;
     procedure SyncCallback(ID: Integer; Connected: Boolean; Line: String; Position: THABPosition);
-    function ExtractPositionFrom(Line: String): THABPosition; virtual;
+    procedure ProcessLine(Line: String); virtual;
     function ProcessSentence(Line: String): THABPosition;
   public
     { Public declarations }
@@ -131,7 +139,7 @@ begin
     Result := Position;
 end;
 
-function TSource.ExtractPositionFrom(Line: String): THABPosition;
+procedure TSource.ProcessLine(Line: String);
 var
     Dollar: Integer;
     Position: THABPosition;
@@ -143,10 +151,11 @@ begin
         if Dollar > 0 then begin
             // UKHAS sentence
             Position := ProcessSentence(Copy(Line, Dollar, Length(Line)));
+            if Position.InUse then begin
+                SyncCallback(SourceID, True, Line, Position);
+            end;
         end;
     end;
-
-    Result := Position;
 end;
 
 procedure TSource.SyncCallback(ID: Integer; Connected: Boolean; Line: String; Position: THABPosition);

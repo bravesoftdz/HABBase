@@ -45,19 +45,19 @@
 				<Form>frmMain</Form>
 			</DCCReference>
 			<DCCReference Include="HABRx\Source.pas"/>
-			<DCCReference Include="HABRx\GatewaySource.pas"/>
+			<DCCReference Include="HABRx\LoRaGatewaySource.pas"/>
 			<DCCReference Include="HABRx\DLFlDigiSource.pas"/>
 			<DCCReference Include="HABRx\HabitatSource.pas"/>
 			<DCCReference Include="SourceForm.pas">
 				<Form>frmSource</Form>
 			</DCCReference>
-			<DCCReference Include="GatewaySourceForm.pas">
-				<Form>frmGatewaySource</Form>
+			<DCCReference Include="LoRaGatewaySourceForm.pas">
+				<Form>frmLoRaGatewaySource</Form>
 			</DCCReference>
 			<DCCReference Include="SourceSettings.pas">
 				<Form>frmSourceSettings</Form>
 			</DCCReference>
-			<DCCReference Include="GatewaySourceSettings.pas">
+			<DCCReference Include="LoRaGatewaySourceSettings.pas">
 				<Form>frmGatewaySourceSettings</Form>
 			</DCCReference>
 			<DCCReference Include="HABRx\Miscellaneous.pas"/>
@@ -67,9 +67,13 @@
 			<DCCReference Include="DLFLDigiSourceForm.pas">
 				<Form>frmDLFLDigiSource</Form>
 			</DCCReference>
-			<DCCReference Include="SerialSourceForm.pas">
-				<Form>frmSerialSource</Form>
+			<DCCReference Include="LoRaSerialSourceForm.pas">
+				<Form>frmLoRaSerialSource</Form>
 			</DCCReference>
+			<DCCReference Include="LoRaSourceForm.pas">
+				<Form>frmLoRaSource</Form>
+			</DCCReference>
+			<DCCReference Include="HABRx\LoRaSerialSource.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

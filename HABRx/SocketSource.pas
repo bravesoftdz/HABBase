@@ -42,10 +42,7 @@ begin
             while True do begin
                 Line := AClient.IOHandler.ReadLn;
                 if Line <> '' then begin
-                    Position := ExtractPositionFrom(Line);
-                    if Position.InUse then begin
-                        SyncCallback(SourceID, True, Line, Position);
-                    end;
+                    ProcessLine(Line);
                 end;
             end;
         except

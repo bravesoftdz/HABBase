@@ -1,4 +1,4 @@
-unit GatewaySource;
+unit LoRaGatewaySource;
 
 interface
 
@@ -11,14 +11,14 @@ uses SocketSource, Source, SysUtils,
 ;
 
 type
-  TGatewaySource = class(TSocketSource)
+  TLoRaGatewaySource = class(TSocketSource)
   private
     { Private declarations }
     PreviousLines: Array[0..1] of String;
     function ProcessJSON(Line: String): THABPosition;
   protected
     { Protected declarations }
-    function ExtractPositionFrom(Line: String): THABPosition; override;
+    procedure ProcessLine(Line: String); override;
   public
     { Public declarations }
   end;
@@ -27,7 +27,7 @@ implementation
 
 uses Miscellaneous;
 
-function TGatewaySource.ExtractPositionFrom(Line: String): THABPosition;
+procedure TLoRaGatewaySource.ProcessLine(Line: String);
 var
     Position: THABPosition;
 begin
@@ -37,17 +37,17 @@ begin
         if Pos('"POSN"', Line) > 0 then begin
             // {"class":"POSN","index":0;"payload":"NOTAFLIGHT","time":"13:01:56","lat":52.01363,"lon":-2.50647,"alt":5507,"rate":7.0}
             Position := ProcessJSON(Line);
-            if Line <> PreviousLines[Position.Channel] then begin
-                PreviousLines[Position.Channel] := Line;
-                Position.InUse := True;
+            if Position.InUse then begin
+                if Line <> PreviousLines[Position.Channel] then begin
+                    PreviousLines[Position.Channel] := Line;
+                    SyncCallback(SourceID, True, Line, Position);
+                end;
             end;
         end;
     end;
-
-    Result := Position;
 end;
 
-function TGatewaySource.ProcessJSON(Line: String): THABPosition;
+function TLoRaGatewaySource.ProcessJSON(Line: String): THABPosition;
 var
     PayloadIndex: Integer;
     TimeStamp: String;
@@ -74,6 +74,7 @@ begin
         Position.Latitude := GetJSONFloat(Line, 'lat');
         Position.Longitude := GetJSONFloat(Line, 'lon');
         Position.Altitude := GetJSONFloat(Line, 'alt');
+        Position.InUse := True;
     except
     end;
 

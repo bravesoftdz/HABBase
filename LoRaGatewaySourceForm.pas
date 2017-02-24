@@ -1,14 +1,14 @@
-unit GatewaySourceForm;
+unit LoRaGatewaySourceForm;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, SourceForm, AdvSmoothButton, ExtCtrls, AdvPanel, StdCtrls,
-  GatewaySource, GatewaySourceSettings, VrControls, VrNavigator;
+  Dialogs, SourceForm, LoRaSourceForm, AdvSmoothButton, ExtCtrls, AdvPanel, StdCtrls,
+  LoRaGatewaySource, LoRaGatewaySourceSettings, VrControls, VrNavigator;
 
 type
-  TfrmGatewaySource = class(TfrmSource)
+  TfrmLoRaGatewaySource = class(TfrmLoRaSource)
     procedure FormCreate(Sender: TObject);
     procedure btnSettingsClick(Sender: TObject);
   private
@@ -22,7 +22,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmGatewaySource.btnSettingsClick(Sender: TObject);
+procedure TfrmLoRaGatewaySource.btnSettingsClick(Sender: TObject);
 var
     SourceSettingsForm: TfrmGatewaySourceSettings;
 begin
@@ -33,7 +33,7 @@ begin
     SourceSettingsForm.Free;
 end;
 
-procedure TfrmGatewaySource.FormCreate(Sender: TObject);
+procedure TfrmLoRaGatewaySource.FormCreate(Sender: TObject);
 var
     ID: Integer;
 begin
@@ -42,7 +42,7 @@ begin
     Settings.Add('Host', 'LoRaGW5');
     Settings.Add('Port', 6004);
     ID := 0;
-    Source := TGatewaySource.Create(ID, Callback, Settings);
+    Source := TLoRaGatewaySource.Create(ID, Callback, Settings);
 end;
 
 end.

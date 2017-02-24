@@ -1,5 +1,7 @@
 inherited frmGatewaySourceSettings: TfrmGatewaySourceSettings
-  Caption = 'Gateway Source Settings'
+  Caption = 'LoRa Gateway Source Settings'
+  ExplicitWidth = 651
+  ExplicitHeight = 375
   PixelsPerInch = 96
   TextHeight = 19
   inherited pnlButtons: TPanel
@@ -13,9 +15,6 @@ inherited frmGatewaySourceSettings: TfrmGatewaySourceSettings
     end
   end
   inherited pnlStatus: TAdvPanel
-    ExplicitTop = -2
-    ExplicitWidth = 645
-    ExplicitHeight = 305
     FullHeight = 337
   end
 end

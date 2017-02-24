@@ -33,13 +33,16 @@ begin
         try
             if (Character = Chr(10)) or (Character = Chr(13)) then begin
                 if Length(Line) > 0 then begin
-                    Position := ExtractPositionFrom(Line);
-                    if Position.InUse then begin
-                        SyncCallback(SourceID, True, Line, Position);
+                    try
+                        ProcessLine(Line);
+                    finally
+                        Line := '';
                     end;
                 end;
             end else begin
-                if Length(Line) < 1000 then begin
+                if Length(Line) > 1000 then begin
+                    Line := '';
+                end else begin
                     Line := Line + Character;
                 end;
             end;

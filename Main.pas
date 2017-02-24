@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Source, StdCtrls,
-  SourceForm, GatewaySourceForm, DLFLDigiSourceForm, SerialSourceForm,
+  SourceForm, LoRaGatewaySourceForm, DLFLDigiSourceForm, SerialSourceForm, LoRaSerialSourceForm,
   ExtCtrls, AdvSmoothButton, GIFImg, AdvPanel, AdvSmoothStatusIndicator, AdvGDIP, HABDB;
 
 type
@@ -66,11 +66,11 @@ begin
         SourceType := NewSourceType;
         //   TSourceType = (sNone, stGateway, stDLFLDigi, stSerial, stHabitat, stHABModem);
         if SourceType = stGateway then begin
-            Form := TfrmGatewaySource.Create(nil);
+            Form := TfrmLoRaGatewaySource.Create(nil);
         end else if SourceType = stDLFLDigi then begin
             Form := TfrmDLFLDigiSource.Create(nil);
         end else if SourceType = stSerial then begin
-            Form := TfrmSerialSource.Create(nil);
+            Form := TfrmLoRaSerialSource.Create(nil);
         end else begin
             Form := nil;
         end;

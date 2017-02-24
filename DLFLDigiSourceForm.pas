@@ -37,14 +37,8 @@ end;
 
 
 procedure TfrmDLFLDigiSource.btnSettingsClick(Sender: TObject);
-//var
-//    SourceSettingsForm: TfrmGatewaySourceSettings;
 begin
-//    SourceSettingsForm := TfrmGatewaySourceSettings.Create(nil);
-//    if SourceSettingsForm.ShowModal = mrOK then begin
-//        // Save Gateway Settings
-//    end;
-//    SourceSettingsForm.Free;
+    //
 end;
 
 end.

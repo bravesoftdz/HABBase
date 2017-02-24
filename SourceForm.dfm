@@ -151,8 +151,6 @@ object frmSource: TfrmSource
     StatusBar.Font.Style = []
     StatusBar.Color = 12560553
     StatusBar.ColorTo = 14602191
-    ExplicitWidth = 495
-    ExplicitHeight = 210
     DesignSize = (
       555
       412)
@@ -182,7 +180,7 @@ object frmSource: TfrmSource
       Caption = 'Recent History:'
     end
     object Label3: TLabel
-      Left = 354
+      Left = 350
       Top = 24
       Width = 56
       Height = 13
@@ -193,6 +191,7 @@ object frmSource: TfrmSource
       Alignment = taRightJustify
       Anchors = [akTop, akRight]
       Caption = 'Connected:'
+      ExplicitLeft = 354
     end
     object Label4: TLabel
       Left = 47
@@ -207,7 +206,7 @@ object frmSource: TfrmSource
       Caption = 'Payload ID:'
     end
     object Label5: TLabel
-      Left = 384
+      Left = 380
       Top = 65
       Width = 26
       Height = 13
@@ -218,6 +217,7 @@ object frmSource: TfrmSource
       Alignment = taRightJustify
       Anchors = [akTop, akRight]
       Caption = 'Time:'
+      ExplicitLeft = 384
     end
     object Label6: TLabel
       Left = 60
@@ -232,7 +232,7 @@ object frmSource: TfrmSource
       Caption = 'Latitude:'
     end
     object Label7: TLabel
-      Left = 360
+      Left = 356
       Top = 105
       Width = 51
       Height = 13
@@ -243,6 +243,7 @@ object frmSource: TfrmSource
       Alignment = taRightJustify
       Anchors = [akTop, akRight]
       Caption = 'Longitude:'
+      ExplicitLeft = 360
     end
     object Label8: TLabel
       Left = 61
@@ -271,7 +272,7 @@ object frmSource: TfrmSource
       TabOrder = 0
     end
     object pnlConnected: TPanel
-      Left = 423
+      Left = 419
       Top = 17
       Width = 121
       Height = 28
@@ -284,12 +285,13 @@ object frmSource: TfrmSource
       Color = clSilver
       ParentBackground = False
       TabOrder = 1
+      ExplicitLeft = 423
     end
     object Panel1: TPanel
       Left = 119
       Top = 181
-      Width = 425
-      Height = 218
+      Width = 421
+      Height = 214
       Margins.Left = 2
       Margins.Top = 2
       Margins.Right = 2
@@ -302,8 +304,8 @@ object frmSource: TfrmSource
       object ListBox1: TListBox
         Left = 1
         Top = 1
-        Width = 423
-        Height = 216
+        Width = 419
+        Height = 212
         Align = alClient
         BorderStyle = bsNone
         Color = clSilver
@@ -332,7 +334,7 @@ object frmSource: TfrmSource
       TabOrder = 3
     end
     object pnlTime: TPanel
-      Left = 422
+      Left = 418
       Top = 58
       Width = 120
       Height = 28
@@ -345,6 +347,7 @@ object frmSource: TfrmSource
       Color = clSilver
       ParentBackground = False
       TabOrder = 4
+      ExplicitLeft = 422
     end
     object pnlLatitude: TPanel
       Left = 121
@@ -361,7 +364,7 @@ object frmSource: TfrmSource
       TabOrder = 5
     end
     object pnlLongitude: TPanel
-      Left = 422
+      Left = 418
       Top = 98
       Width = 121
       Height = 28
@@ -374,6 +377,7 @@ object frmSource: TfrmSource
       Color = clSilver
       ParentBackground = False
       TabOrder = 6
+      ExplicitLeft = 422
     end
     object pnlAltitude: TPanel
       Left = 121

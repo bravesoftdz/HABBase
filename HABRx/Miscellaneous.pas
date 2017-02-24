@@ -5,6 +5,7 @@ interface
 function GetJSONString(Line: String; FieldName: String): String;
 function GetJSONInteger(Line: String; FieldName: String): LongInt;
 function GetJSONFloat(Line: String; FieldName: String): Double;
+function GetString(var Line: String; Delimiter: String=','): String;
 
 implementation
 
@@ -65,6 +66,20 @@ begin
     Line := Copy(Line, 1, Position-1);
 
     Result := StrToIntDef(Line, 0);
+end;
+
+function GetString(var Line: String; Delimiter: String=','): String;
+var
+    Position: Integer;
+begin
+    Position := Pos(Delimiter, string(Line));
+    if Position > 0 then begin
+        Result := Copy(Line, 1, Position-1);
+        Line := Copy(Line, Position+Length(Delimiter), Length(Line));
+    end else begin
+        Result := Line;
+        Line := '';
+    end;
 end;
 
 end.

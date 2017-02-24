@@ -1,4 +1,4 @@
-unit GatewaySourceSettings;
+unit LoRaGatewaySourceSettings;
 
 interface
 
