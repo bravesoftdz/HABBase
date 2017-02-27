@@ -2,7 +2,7 @@ unit LoRaGatewaySource;
 
 interface
 
-uses SocketSource, Source, SysUtils,
+uses SocketSource, Source, SysUtils, HABTypes,
 {$IFDEF VCL}
   ExtCtrls, Windows
 {$ELSE}

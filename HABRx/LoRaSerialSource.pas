@@ -2,7 +2,7 @@ unit LoRaSerialSource;
 
 interface
 
-uses SerialSource, Source, Classes, SysUtils, VaClasses, VaComm, Miscellaneous;
+uses SerialSource, Source, Classes, SysUtils, VaClasses, VaComm, Miscellaneous, HABTypes;
 
 type
   TLoRaSerialSource = class(TSerialSource)
@@ -32,7 +32,9 @@ begin
         Position.SignalValues.Add('CurrentRSSI', StrToIntDef(Line, 0));
         SyncCallback(SourceID, True, Line, Position);
     end else if Command = 'HEX' then begin
-        // Binary - SSDV
+        // SSDV
+        Line := '55' + Line;
+        inherited;
     end else if Command = 'FREQERR' then begin
         Position.SignalValues.Add('FrequencyError', StrToFloat(Line));
         SyncCallback(SourceID, True, '', Position);

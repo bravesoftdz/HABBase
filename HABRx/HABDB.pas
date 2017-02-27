@@ -2,7 +2,7 @@ unit HABDB;
 
 interface
 
-uses Source, DB, MemDS, VirtualTable;
+uses Classes, DB, MemDS, VirtualTable, HABTypes;
 
 type
   THABTable = record
@@ -19,20 +19,13 @@ type
     { Protected declarations }
   public
     { Public declarations }
-    function AddPosition(Position: THABPosition): Integer;
+    procedure AddPosition(Position: THABPosition);
+    procedure GetPayloadList(var List: TStringList);
   published
     // constructor Create(FileNamePrefix: String);
   end;
 
 implementation
-
-//constructor TSource.Create(ID: Integer; Callback: TSourcePositionCallback);
-//begin
-//    SentenceCount := 0;
-//    SourceID := ID;
-//    PositionCallback := Callback;
-//    Enabled := True;
-//end;
 
 function THABDB.AddTable(PayloadID: String): TVirtualTable;
 var
@@ -69,12 +62,22 @@ begin
     Result := AddTable(PayloadID);
 end;
 
-function THABDB.AddPosition(Position: THABPosition): Integer;
+procedure THABDB.GetPayloadList(var List: TStringList);
+var
+    i: Integer;
+begin
+    List.Clear;
+
+    for i := Low(HABTables) to High(HABTables) do begin
+        List.Append(HABTables[i].PayloadID);
+    end;
+end;
+
+
+procedure THABDB.AddPosition(Position: THABPosition);
 var
     Table: TVirtualTable;
 begin
-    Result := 0;
-
     if Position.InUse then begin
         Table := GetTableForPayload(Position.PayloadID);
         with Table, Position do begin
@@ -86,7 +89,6 @@ begin
             FieldByName('Longitude').AsFloat := Longitude;
             FieldByName('Altitude').AsFloat := Altitude;
             Post;
-            Result := RecordCount;
         end;
     end;
 end;

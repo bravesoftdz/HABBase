@@ -2,7 +2,7 @@ unit DLFlDigiSource;
 
 interface
 
-uses SocketSource, Source;
+uses SocketSource, Source, Habitat, HABDB, HABTypes;
 
 type
   TDLFlDigiSource = class(TSocketSource)
@@ -13,14 +13,14 @@ type
   public
     { Public declarations }
   published
-    constructor Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings);
+    constructor Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings; Database: THABDB; Habitat: THabitatThread);
   end;
 
 implementation
 
-constructor TDLFlDigiSource.Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings);
+constructor TDLFlDigiSource.Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings; Database: THABDB; Habitat: THabitatThread);
 begin
-    inherited Create(ID, Callback, Settings);
+    inherited Create(ID, Callback, Settings, Database, Habitat);
 end;
 
 end.

@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Source, StdCtrls,
+  Dialogs, Source, StdCtrls, Habitat,
   SourceForm, LoRaGatewaySourceForm, DLFLDigiSourceForm, SerialSourceForm, LoRaSerialSourceForm,
   HabitatSourceForm, ExtCtrls, AdvSmoothButton, GIFImg, AdvPanel, AdvSmoothStatusIndicator, AdvGDIP, HABDB;
 
@@ -39,6 +39,7 @@ type
     HABSources: TList;
     LastID: Integer;
     HABDB: THABDB;
+    HabitatThread: THabitatThread;
     procedure AddHABSource(NewSourceType: TSourceType);
     procedure CreateTelemetrySources;
     procedure DataSourceClick(Sender: TObject);
@@ -66,19 +67,20 @@ begin
         SourceType := NewSourceType;
         //   TSourceType = (sNone, stGateway, stDLFLDigi, stSerial, stHabitat);
         if SourceType = stGateway then begin
-            Form := TfrmLoRaGatewaySource.Create(nil);
+            Form := TfrmLoRaGatewaySource.Create(nil, HABDB, HabitatThread);
         end else if SourceType = stDLFLDigi then begin
-            Form := TfrmDLFLDigiSource.Create(nil);
+            Form := TfrmDLFLDigiSource.Create(nil, HABDB, HabitatThread);
         end else if SourceType = stSerial then begin
-            Form := TfrmLoRaSerialSource.Create(nil);
+            Form := TfrmLoRaSerialSource.Create(nil, HABDB, HabitatThread);
         end else if SourceType = stHabitat then begin
-            Form := TfrmHabitatSource.Create(nil);
+            Form := TfrmHabitatSource.Create(nil, HABDB, HabitatThread);
         end else begin
             Form := nil;
         end;
         if Form <> nil then begin
             Form.HideYourself;
-            Form.HABDB := HABDB;
+//            Form.HABDB := HABDB;
+//            Form.HabitatThread := HabitatThread;
 
             Description := 'test' + IntToStr(LastID);
             SourceID := LastID;
@@ -200,6 +202,7 @@ procedure TfrmMain.FormCreate(Sender: TObject);
 begin
     LastID := 0;
     HABSources := TList.Create;
+    HabitatThread := THabitatThread.create();
 end;
 
 end.

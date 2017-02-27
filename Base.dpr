@@ -21,7 +21,9 @@ uses
   LoRaSerialSource in 'HABRx\LoRaSerialSource.pas',
   WebSource in 'HABRx\WebSource.pas',
   WebSourceForm in 'WebSourceForm.pas' {frmWebSource},
-  HabitatSourceForm in 'HabitatSourceForm.pas' {frmHabitatSource};
+  HabitatSourceForm in 'HabitatSourceForm.pas' {frmHabitatSource},
+  Habitat in 'HABRx\Habitat.pas',
+  HABTypes in 'HABRx\HABTypes.pas';
 
 {$R *.res}
 

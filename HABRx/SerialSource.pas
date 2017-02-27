@@ -2,7 +2,7 @@ unit SerialSource;
 
 interface
 
-uses Source, Classes, SysUtils, VaClasses, VaComm;
+uses Source, Classes, SysUtils, VaClasses, VaComm, HABTypes;
 
 type
   TSerialSource = class(TSource)

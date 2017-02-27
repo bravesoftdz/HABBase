@@ -2,7 +2,7 @@ unit HabitatSource;
 
 interface
 
-uses WebSource, Source, Classes, SysUtils, Miscellaneous;
+uses WebSource, Source, Classes, SysUtils, Miscellaneous, Habitat, HABDB, HABTypes;
 
 type
   THabitatSource = class(TWebSource)
@@ -15,25 +15,33 @@ type
   public
     { Public declarations }
   published
-    constructor Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings);
+    constructor Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings; Database: THABDB; Habitat: THabitatThread);
   end;
 
 implementation
 
-constructor THabitatSource.Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings);
+constructor THabitatSource.Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings; Database: THABDB; Habitat: THabitatThread);
 begin
-    inherited Create(ID, Callback, Settings);
+    inherited Create(ID, Callback, Settings, Database, Habitat);
 end;
 
 procedure THabitatSource.Execute;
 var
     Response: String;
+    PayloadList: TStringList;
+    i: Integer;
 begin
-    while not Terminated do begin
-        Response := GetURL('http://spacenear.us/tracker/datanew.php?mode=Position&type=positions&format=json&max_positions=10&vehicles=PYSKY2');
+    PayloadList := TStringList.Create;
 
-        if Response <> '' then begin
-            ProcessResponse(Response);
+    while not Terminated do begin
+        HABDB.GetPayloadList(PayloadList);
+
+        for i := 0 to PayloadList.Count-1 do begin
+            Response := GetURL('http://spacenear.us/tracker/datanew.php?mode=Position&type=positions&format=json&max_positions=10&vehicles=' + PayloadList[i]);
+
+            if Response <> '' then begin
+                ProcessResponse(Response);
+            end;
         end;
         Sleep(10000);
     end;

@@ -5,22 +5,22 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SourceForm, StdCtrls, AdvPanel, VrControls, VrNavigator,
-  AdvSmoothButton, ExtCtrls, SerialSource;
+  AdvSmoothButton, ExtCtrls, SerialSource, Habitat, HABDB;
 
 type
   TfrmSerialSource = class(TfrmSource)
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    constructor Create(AOwner: TComponent; Database: THABDB; Habitat: THabitatThread);
   end;
 
 implementation
 
 {$R *.dfm}
 
-procedure TfrmSerialSource.FormCreate(Sender: TObject);
+constructor TfrmSerialSource.Create(AOwner: TComponent; Database: THABDB; Habitat: THabitatThread);
 var
     ID: Integer;
 begin
@@ -29,7 +29,7 @@ begin
     Settings.Add('Port', 'COM4');
     Settings.Add('Baud', 57600);
     ID := 0;
-    Source := TSerialSource.Create(ID, Callback, Settings);
+    Source := TSerialSource.Create(ID, Callback, Settings, Database, Habitat);
 end;
 
 end.

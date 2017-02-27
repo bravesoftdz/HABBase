@@ -1,24 +1,24 @@
 inherited frmLoRaGatewaySource: TfrmLoRaGatewaySource
   Caption = 'LoRa Gateway Source'
-  ClientWidth = 719
-  ExplicitWidth = 735
+  ClientWidth = 704
+  ExplicitWidth = 720
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlButtons: TPanel
-    Width = 719
+    Width = 704
     Margins.Left = 1
     Margins.Top = 1
     Margins.Right = 1
     Margins.Bottom = 1
+    ExplicitWidth = 719
     inherited AdvSmoothButton1: TAdvSmoothButton
-      Left = 636
       Top = 1
       Height = 36
       Margins.Left = 1
       Margins.Top = 1
       Margins.Right = 1
       Margins.Bottom = 1
-      ExplicitLeft = 476
+      ExplicitLeft = 636
       ExplicitTop = 1
       ExplicitHeight = 36
     end
@@ -27,53 +27,60 @@ inherited frmLoRaGatewaySource: TfrmLoRaGatewaySource
     end
   end
   inherited pnlStatus: TAdvPanel
-    Width = 719
+    Width = 704
+    ExplicitWidth = 719
     FullHeight = 337
+    inherited Label2: TLabel
+      Top = 190
+      ExplicitTop = 190
+    end
     inherited Label3: TLabel
-      Left = 302
+      Left = 293
       Top = 24
       Anchors = [akTop]
       ExplicitLeft = 296
       ExplicitTop = 24
     end
     inherited Label5: TLabel
-      Left = 331
+      Left = 322
       Anchors = [akTop]
       ExplicitLeft = 324
     end
     inherited Label7: TLabel
-      Left = 305
+      Left = 296
       Top = 105
       Anchors = [akTop]
       ExplicitLeft = 299
       ExplicitTop = 105
     end
     inherited pnlConnected: TPanel
-      Left = 364
+      Left = 353
       Anchors = [akTop]
-      ExplicitLeft = 356
+      ExplicitLeft = 362
     end
     inherited Panel1: TPanel
-      Width = 565
-      Height = 198
-      ExplicitWidth = 405
-      ExplicitHeight = 198
+      Top = 180
+      Width = 563
+      Height = 217
+      ExplicitTop = 180
+      ExplicitWidth = 563
+      ExplicitHeight = 217
       inherited ListBox1: TListBox
-        Width = 563
-        Height = 196
-        ExplicitWidth = 403
-        ExplicitHeight = 196
+        Width = 561
+        Height = 215
+        ExplicitWidth = 559
+        ExplicitHeight = 192
       end
     end
     inherited pnlTime: TPanel
-      Left = 362
+      Left = 351
       Anchors = [akTop]
-      ExplicitLeft = 354
+      ExplicitLeft = 360
     end
     inherited pnlLongitude: TPanel
-      Left = 362
+      Left = 351
       Anchors = [akTop]
-      ExplicitLeft = 354
+      ExplicitLeft = 360
     end
   end
 end

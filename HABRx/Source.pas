@@ -2,33 +2,7 @@ unit Source;
 
 interface
 
-uses Classes, SysUtils, Generics.Collections;
-
-type
-  TSettings = TDictionary<String, Variant>;
-
-type
-  TExtraFields = TDictionary<String, Variant>;
-
-type
-  TSignalValues = TDictionary<String, Variant>;
-
-type
-  THABPosition = record
-    InUse:          Boolean;
-    Channel:        Integer;
-    PayloadID:      String;
-    Counter:        Integer;
-    TimeStamp:      TDateTime;
-    Latitude:       Double;
-    Longitude:      Double;
-    Altitude:       Double;
-    SignalValues:   TSignalValues;
-    ExtraFields:    TExtraFields;
-  end;
-
-type
-  TSourcePositionCallback = procedure(ID: Integer; Connected: Boolean; Line: String; Position: THABPosition) of object;
+uses Classes, SysUtils, Habitat, HABDB, HABTypes;
 
 type
   TSource = class(TThread)
@@ -39,6 +13,9 @@ type
     SourceID: Integer;
     SentenceCount: Integer;
     Enabled: Boolean;
+    HabitatEnabled: Boolean;
+    HABDB: THABDB;
+    HabitatThread: THabitatThread;
     SourceSettings: TSettings;
     procedure Execute; override;
     procedure SyncCallback(ID: Integer; Connected: Boolean; Line: String; Position: THABPosition);
@@ -47,10 +24,10 @@ type
   public
     { Public declarations }
     PositionCallback: TSourcePositionCallback;
-    procedure Enable; virtual;
-    procedure Disable; virtual;
+    procedure Enable(Enable: Boolean);
+    procedure EnableHabitat(Enable: Boolean);
   published
-    constructor Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings);
+    constructor Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings; Database: THABDB; Habitat: THabitatThread);
   end;
 
 implementation
@@ -60,13 +37,16 @@ begin
     // Nothing to do here
 end;
 
-constructor TSource.Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings);
+constructor TSource.Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings; Database: THABDB; Habitat: THabitatThread);
 begin
     SentenceCount := 0;
     SourceID := ID;
     PositionCallback := Callback;
     Enabled := True;
+    HabitatEnabled := False;
     SourceSettings := Settings;
+    HabitatThread := Habitat;
+    HABDB := Database;
     inherited Create(False);
 end;
 
@@ -141,18 +121,28 @@ end;
 
 procedure TSource.ProcessLine(Line: String);
 var
-    Dollar: Integer;
     Position: THABPosition;
 begin
     FillChar(Position, SizeOf(Position), 0);
 
     if Line <> '' then begin
-        Dollar := Pos('$', Line);
-        if Dollar > 0 then begin
+        if Copy(Line,1,2) = '55' then begin
+            // SSDV
+            Position.SSDVPacket := Line;
+            if (HabitatThread <> nil) and HabitatEnabled then begin
+                HabitatThread.SaveSSDVToHabitat(Line);
+            end;
+        end else if Line[1] = '$' then begin
             // UKHAS sentence
-            Position := ProcessSentence(Copy(Line, Dollar, Length(Line)));
+            Position := ProcessSentence(Line);
             if Position.InUse then begin
+                if HABDB <> nil then begin
+                    HABDB.AddPosition(Position);
+                end;
                 SyncCallback(SourceID, True, Line, Position);
+                if (HabitatThread <> nil) and HabitatEnabled then begin
+                    HabitatThread.SaveTelemetryToHabitat(Line);
+                end;
             end;
         end;
     end;
@@ -167,14 +157,14 @@ begin
     );
 end;
 
-procedure TSource.Enable;
+procedure TSource.Enable(Enable: Boolean);
 begin
-    Enabled := True;
+    Enabled := Enable;
 end;
 
-procedure TSource.Disable;
+procedure TSource.EnableHabitat(Enable: Boolean);
 begin
-    Enabled := False;
+    HabitatEnabled := Enable;
 end;
 
 end.

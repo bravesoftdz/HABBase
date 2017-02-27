@@ -5,22 +5,22 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SourceForm, LoRaSourceForm, StdCtrls, AdvPanel, VrControls, VrNavigator,
-  AdvSmoothButton, ExtCtrls, LoRaSerialSource;
+  AdvSmoothButton, ExtCtrls, LoRaSerialSource, Habitat, HABDB, HABTypes;
 
 type
   TfrmLoRaSerialSource = class(TfrmLoRaSource)
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    constructor Create(AOwner: TComponent; Database: THABDB; Habitat: THabitatThread);
   end;
 
 implementation
 
 {$R *.dfm}
 
-procedure TfrmLoRaSerialSource.FormCreate(Sender: TObject);
+constructor TfrmLoRaSerialSource.Create(AOwner: TComponent; Database: THABDB; Habitat: THabitatThread);
 var
     ID: Integer;
 begin
@@ -29,7 +29,8 @@ begin
     Settings.Add('Port', 'COM4');
     Settings.Add('Baud', 57600);
     ID := 0;
-    Source := TLoRaSerialSource.Create(ID, Callback, Settings);
+    Source := TLoRaSerialSource.Create(ID, Callback, Settings, Database, Habitat);
+    Source.EnableHabitat(True);
 end;
 
 end.

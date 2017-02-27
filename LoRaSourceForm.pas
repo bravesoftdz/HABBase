@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Source, SourceForm, StdCtrls, AdvPanel, VrControls, VrNavigator,
-  AdvSmoothButton, ExtCtrls;
+  AdvSmoothButton, ExtCtrls, HABTypes;
 
 type
   TfrmLoRaSource = class(TfrmSource)

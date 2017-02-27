@@ -3,7 +3,8 @@ unit SocketSource;
 interface
 
 uses Source, Classes, SysUtils,
-     IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient;
+     IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient,
+     Habitat, HABDB, HABTypes;
 
 type
   TSocketSource = class(TSource)
@@ -18,7 +19,7 @@ type
   public
     { Public declarations }
   published
-    constructor Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings);
+    constructor Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings; Database: THABDB; Habitat: THabitatThread);
   end;
 
 implementation
@@ -53,9 +54,9 @@ begin
     end;
 end;
 
-constructor TSocketSource.Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings);
+constructor TSocketSource.Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings; Database: THABDB; Habitat: THabitatThread);
 begin
-    inherited Create(ID, Callback, Settings);
+    inherited Create(ID, Callback, Settings, Database, Habitat);
 end;
 
 end.

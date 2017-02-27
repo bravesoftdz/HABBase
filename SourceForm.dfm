@@ -14,7 +14,6 @@ object frmSource: TfrmSource
   FormStyle = fsMDIChild
   OldCreateOrder = True
   Visible = True
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnlButtons: TPanel
@@ -31,8 +30,6 @@ object frmSource: TfrmSource
     Color = clSilver
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 210
-    ExplicitWidth = 495
     object AdvSmoothButton1: TAdvSmoothButton
       AlignWithMargins = True
       Left = 475
@@ -63,7 +60,6 @@ object frmSource: TfrmSource
       TabOrder = 0
       Version = '2.0.2.0'
       OnClick = AdvSmoothButton1Click
-      ExplicitLeft = 411
     end
     object btnSettings: TVrMediaButton
       Left = 8
@@ -155,21 +151,9 @@ object frmSource: TfrmSource
       555
       412)
     FullHeight = 337
-    object Label1: TLabel
-      Left = 22
-      Top = 25
-      Width = 81
-      Height = 13
-      Margins.Left = 2
-      Margins.Top = 2
-      Margins.Right = 2
-      Margins.Bottom = 2
-      Alignment = taRightJustify
-      Caption = 'Sentence Count:'
-    end
     object Label2: TLabel
       Left = 27
-      Top = 190
+      Top = 150
       Width = 75
       Height = 13
       Margins.Left = 2
@@ -180,7 +164,7 @@ object frmSource: TfrmSource
       Caption = 'Recent History:'
     end
     object Label3: TLabel
-      Left = 350
+      Left = 342
       Top = 24
       Width = 56
       Height = 13
@@ -194,8 +178,8 @@ object frmSource: TfrmSource
       ExplicitLeft = 354
     end
     object Label4: TLabel
-      Left = 47
-      Top = 64
+      Left = 46
+      Top = 24
       Width = 56
       Height = 13
       Margins.Left = 2
@@ -206,7 +190,7 @@ object frmSource: TfrmSource
       Caption = 'Payload ID:'
     end
     object Label5: TLabel
-      Left = 380
+      Left = 372
       Top = 65
       Width = 26
       Height = 13
@@ -220,8 +204,8 @@ object frmSource: TfrmSource
       ExplicitLeft = 384
     end
     object Label6: TLabel
-      Left = 60
-      Top = 105
+      Left = 59
+      Top = 65
       Width = 43
       Height = 13
       Margins.Left = 2
@@ -232,7 +216,7 @@ object frmSource: TfrmSource
       Caption = 'Latitude:'
     end
     object Label7: TLabel
-      Left = 356
+      Left = 348
       Top = 105
       Width = 51
       Height = 13
@@ -246,8 +230,8 @@ object frmSource: TfrmSource
       ExplicitLeft = 360
     end
     object Label8: TLabel
-      Left = 61
-      Top = 145
+      Left = 60
+      Top = 105
       Width = 41
       Height = 13
       Margins.Left = 2
@@ -257,22 +241,8 @@ object frmSource: TfrmSource
       Alignment = taRightJustify
       Caption = 'Altitude:'
     end
-    object pnlLines: TPanel
-      Left = 120
-      Top = 17
-      Width = 150
-      Height = 28
-      Margins.Left = 2
-      Margins.Top = 2
-      Margins.Right = 2
-      Margins.Bottom = 2
-      BevelOuter = bvLowered
-      Color = clSilver
-      ParentBackground = False
-      TabOrder = 0
-    end
     object pnlConnected: TPanel
-      Left = 419
+      Left = 411
       Top = 17
       Width = 121
       Height = 28
@@ -284,14 +254,13 @@ object frmSource: TfrmSource
       BevelOuter = bvLowered
       Color = clSilver
       ParentBackground = False
-      TabOrder = 1
-      ExplicitLeft = 423
+      TabOrder = 0
     end
     object Panel1: TPanel
       Left = 119
-      Top = 181
-      Width = 421
-      Height = 214
+      Top = 140
+      Width = 413
+      Height = 247
       Margins.Left = 2
       Margins.Top = 2
       Margins.Right = 2
@@ -300,12 +269,12 @@ object frmSource: TfrmSource
       BevelOuter = bvLowered
       Color = clSilver
       ParentBackground = False
-      TabOrder = 2
+      TabOrder = 1
       object ListBox1: TListBox
         Left = 1
         Top = 1
-        Width = 419
-        Height = 212
+        Width = 411
+        Height = 245
         Align = alClient
         BorderStyle = bsNone
         Color = clSilver
@@ -317,11 +286,12 @@ object frmSource: TfrmSource
         ItemHeight = 14
         ParentFont = False
         TabOrder = 0
+        ExplicitHeight = 204
       end
     end
     object pnlPayloadID: TPanel
-      Left = 120
-      Top = 57
+      Left = 119
+      Top = 17
       Width = 150
       Height = 28
       Margins.Left = 2
@@ -331,10 +301,10 @@ object frmSource: TfrmSource
       BevelOuter = bvLowered
       Color = clSilver
       ParentBackground = False
-      TabOrder = 3
+      TabOrder = 2
     end
     object pnlTime: TPanel
-      Left = 418
+      Left = 410
       Top = 58
       Width = 120
       Height = 28
@@ -346,12 +316,11 @@ object frmSource: TfrmSource
       BevelOuter = bvLowered
       Color = clSilver
       ParentBackground = False
-      TabOrder = 4
-      ExplicitLeft = 422
+      TabOrder = 3
     end
     object pnlLatitude: TPanel
-      Left = 121
-      Top = 98
+      Left = 120
+      Top = 58
       Width = 149
       Height = 28
       Margins.Left = 2
@@ -361,10 +330,10 @@ object frmSource: TfrmSource
       BevelOuter = bvLowered
       Color = clSilver
       ParentBackground = False
-      TabOrder = 5
+      TabOrder = 4
     end
     object pnlLongitude: TPanel
-      Left = 418
+      Left = 410
       Top = 98
       Width = 121
       Height = 28
@@ -376,12 +345,11 @@ object frmSource: TfrmSource
       BevelOuter = bvLowered
       Color = clSilver
       ParentBackground = False
-      TabOrder = 6
-      ExplicitLeft = 422
+      TabOrder = 5
     end
     object pnlAltitude: TPanel
-      Left = 121
-      Top = 138
+      Left = 120
+      Top = 98
       Width = 149
       Height = 28
       Margins.Left = 2
@@ -391,7 +359,7 @@ object frmSource: TfrmSource
       BevelOuter = bvLowered
       Color = clSilver
       ParentBackground = False
-      TabOrder = 7
+      TabOrder = 6
     end
   end
 end

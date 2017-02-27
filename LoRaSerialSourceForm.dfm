@@ -1,56 +1,50 @@
 inherited frmLoRaSerialSource: TfrmLoRaSerialSource
   Caption = 'LoRa Serial Source'
-  ClientWidth = 714
-  ExplicitWidth = 730
+  ClientWidth = 710
+  ExplicitWidth = 726
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlButtons: TPanel
-    Width = 714
-    ExplicitWidth = 597
+    Width = 710
+    ExplicitWidth = 714
     inherited AdvSmoothButton1: TAdvSmoothButton
-      Left = 630
-      ExplicitLeft = 513
+      Left = 626
+      ExplicitLeft = 630
     end
   end
   inherited pnlStatus: TAdvPanel
-    Width = 714
-    ExplicitWidth = 597
+    Width = 710
+    ExplicitWidth = 714
     FullHeight = 337
     inherited Label3: TLabel
-      Left = 288
+      Left = 280
       ExplicitLeft = 288
     end
     inherited Label5: TLabel
-      Left = 318
+      Left = 310
       ExplicitLeft = 318
     end
     inherited Label7: TLabel
-      Left = 294
+      Left = 286
       ExplicitLeft = 294
     end
     inherited pnlConnected: TPanel
-      Left = 357
-      ExplicitLeft = 357
+      Left = 349
+      ExplicitLeft = 353
     end
     inherited Panel1: TPanel
-      Width = 564
-      Height = 202
-      ExplicitWidth = 447
-      ExplicitHeight = 202
       inherited ListBox1: TListBox
-        Width = 562
-        Height = 200
-        ExplicitWidth = 445
-        ExplicitHeight = 200
+        ExplicitWidth = 558
+        ExplicitHeight = 196
       end
     end
     inherited pnlTime: TPanel
-      Left = 356
-      ExplicitLeft = 356
+      Left = 348
+      ExplicitLeft = 352
     end
     inherited pnlLongitude: TPanel
-      Left = 356
-      ExplicitLeft = 356
+      Left = 348
+      ExplicitLeft = 352
     end
   end
 end

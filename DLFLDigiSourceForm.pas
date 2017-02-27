@@ -5,16 +5,16 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SourceForm, StdCtrls, AdvPanel, VrControls, VrNavigator,
-  AdvSmoothButton, ExtCtrls, DLFLDigiSource;
+  AdvSmoothButton, ExtCtrls, DLFLDigiSource, Habitat, HABDB;
 
 type
   TfrmDLFLDigiSource = class(TfrmSource)
     procedure btnSettingsClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    constructor Create(AOwner: TComponent; Database: THABDB; Habitat: THabitatThread);
   end;
 
 implementation
@@ -23,7 +23,7 @@ uses Source;
 
 {$R *.dfm}
 
-procedure TfrmDLFLDigiSource.FormCreate(Sender: TObject);
+constructor TfrmDLFLDigiSource.Create(AOwner: TComponent; Database: THABDB; Habitat: THabitatThread);
 var
     ID: Integer;
 begin
@@ -32,7 +32,7 @@ begin
     Settings.Add('Host', 'localhost');
     Settings.Add('Port', 7322);
     ID := 0;
-    Source := TDLFLDigiSource.Create(ID, Callback, Settings);
+    Source := TDLFLDigiSource.Create(ID, Callback, Settings, Database, Habitat);
 end;
 
 

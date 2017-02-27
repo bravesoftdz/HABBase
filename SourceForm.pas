@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, AdvSmoothButton, ExtCtrls, AdvPanel, StdCtrls,
-  Source, SourceSettings, VrControls, VrNavigator, HABDB;
+  Source, SourceSettings, VrControls, VrNavigator, HABDB, Habitat, HABTypes;
 
 type
   TfrmSource = class(TForm)
@@ -16,7 +16,6 @@ type
     btnPause: TVrMediaButton;
     btnClearLog: TVrMediaButton;
     pnlStatus: TAdvPanel;
-    Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -24,7 +23,6 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
-    pnlLines: TPanel;
     pnlConnected: TPanel;
     Panel1: TPanel;
     ListBox1: TListBox;
@@ -37,7 +35,6 @@ type
     procedure btnPauseClick(Sender: TObject);
     procedure AdvSmoothButton1Click(Sender: TObject);
     procedure btnClearLogClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   protected
@@ -46,10 +43,10 @@ type
     procedure Callback(ID: Integer; Connected: Boolean; Line: String; Position: THABPosition); virtual;
   public
     { Public declarations }
-    HABDB: THABDB;
     IsVisible:    Boolean;
     procedure HideYourself;
     procedure ShowYourself;
+    constructor Create(AOwner: TComponent; Database: THABDB; Habitat: THabitatThread);
   end;
 
 implementation
@@ -84,25 +81,19 @@ begin
         pnlLatitude.Caption := FormatFloat('0.00000', Position.Latitude);
         pnlLongitude.Caption := FormatFloat('0.00000', Position.Longitude);
         pnlAltitude.Caption := FormatFloat('0', Position.Altitude);
-        if HABDB = nil then begin
-            RecordCount := 0;
-        end else begin
-            RecordCount := HABDB.AddPosition(Position);
-        end;
         ListBox1.ItemIndex := ListBox1.Items.Add(IntToStr(ID) + ': ' + Line);
-        pnlLines.Caption := IntToStr(RecordCount);
     end;
 end;
 
-procedure TfrmSource.FormCreate(Sender: TObject);
+constructor TfrmSource.Create(AOwner: TComponent; Database: THABDB; Habitat: THabitatThread);
 begin
-    HABDB := nil;
+    inherited Create(AOwner);
     Settings := TSettings.Create;
 end;
 
 procedure TfrmSource.btnPlayClick(Sender: TObject);
 begin
-    Source.Enable;
+    Source.Enable(True);
     btnPause.Enabled := True;
     btnPlay.Enabled := not btnPause.Enabled;
 end;
@@ -114,7 +105,7 @@ end;
 
 procedure TfrmSource.btnPauseClick(Sender: TObject);
 begin
-    Source.Disable;
+    Source.Enable(False);
     btnPause.Enabled := False;
     btnPlay.Enabled := not btnPause.Enabled;
 end;

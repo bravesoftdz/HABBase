@@ -3,7 +3,8 @@ unit WebSource;
 interface
 
 uses Source, Classes, SysUtils,
-     IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP;
+     IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP,
+     Habitat, HABDB, HABTypes;
 
 type
   TWebSource = class(TSource)
@@ -15,14 +16,14 @@ type
   public
     { Public declarations }
   published
-    constructor Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings);
+    constructor Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings; Database: THABDB; Habitat: THabitatThread);
   end;
 
 implementation
 
-constructor TWebSource.Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings);
+constructor TWebSource.Create(ID: Integer; Callback: TSourcePositionCallback; Settings: TSettings; Database: THABDB; Habitat: THabitatThread);
 begin
-    inherited Create(ID, Callback, Settings);
+    inherited Create(ID, Callback, Settings, Database, Habitat);
 end;
 
 function TWebSource.GetURL(URL: String): String;

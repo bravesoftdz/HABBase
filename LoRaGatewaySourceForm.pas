@@ -5,17 +5,18 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SourceForm, LoRaSourceForm, AdvSmoothButton, ExtCtrls, AdvPanel, StdCtrls,
-  LoRaGatewaySource, LoRaGatewaySourceSettings, VrControls, VrNavigator;
+  LoRaGatewaySource, LoRaGatewaySourceSettings, VrControls, VrNavigator,
+  Habitat, HABDB;
 
 type
   TfrmLoRaGatewaySource = class(TfrmLoRaSource)
-    procedure FormCreate(Sender: TObject);
     procedure btnSettingsClick(Sender: TObject);
   private
     { Private declarations }
   protected
   public
     { Public declarations }
+    constructor Create(AOwner: TComponent; Database: THABDB; Habitat: THabitatThread);
   end;
 
 implementation
@@ -33,7 +34,7 @@ begin
     SourceSettingsForm.Free;
 end;
 
-procedure TfrmLoRaGatewaySource.FormCreate(Sender: TObject);
+constructor TfrmLoRaGatewaySource.Create(AOwner: TComponent; Database: THABDB; Habitat: THabitatThread);
 var
     ID: Integer;
 begin
@@ -42,7 +43,7 @@ begin
     Settings.Add('Host', 'LoRaGW5');
     Settings.Add('Port', 6004);
     ID := 0;
-    Source := TLoRaGatewaySource.Create(ID, Callback, Settings);
+    Source := TLoRaGatewaySource.Create(ID, Callback, Settings, Database, Habitat);
 end;
 
 end.

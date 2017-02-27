@@ -2,43 +2,42 @@ inherited frmLoRaSource: TfrmLoRaSource
   Caption = 'LoRa Source'
   ClientWidth = 705
   ExplicitWidth = 721
-  ExplicitHeight = 492
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlButtons: TPanel
     Width = 705
-    ExplicitTop = 416
-    ExplicitWidth = 559
+    ExplicitWidth = 705
     inherited AdvSmoothButton1: TAdvSmoothButton
       Left = 621
-      ExplicitLeft = 475
+      ExplicitLeft = 621
     end
   end
   inherited pnlStatus: TAdvPanel
     Width = 705
+    ExplicitWidth = 705
     DesignSize = (
       701
       412)
     FullHeight = 337
     inherited Label3: TLabel
-      Left = 291
+      Left = 283
       Top = 23
       ExplicitLeft = 291
       ExplicitTop = 23
     end
     inherited Label5: TLabel
-      Left = 320
+      Left = 312
       Top = 64
       ExplicitLeft = 320
       ExplicitTop = 64
     end
     inherited Label7: TLabel
-      Left = 296
+      Left = 288
       Top = 104
       ExplicitLeft = 296
       ExplicitTop = 104
     end
-    object Label9: TLabel [8]
+    object Label9: TLabel [7]
       Left = 491
       Top = 24
       Width = 67
@@ -50,7 +49,7 @@ inherited frmLoRaSource: TfrmLoRaSource
       Alignment = taRightJustify
       Caption = 'Current RSSI:'
     end
-    object Label10: TLabel [9]
+    object Label10: TLabel [8]
       Left = 496
       Top = 65
       Width = 62
@@ -62,7 +61,7 @@ inherited frmLoRaSource: TfrmLoRaSource
       Alignment = taRightJustify
       Caption = 'Packet RSSI:'
     end
-    object Label11: TLabel [10]
+    object Label11: TLabel [9]
       Left = 499
       Top = 104
       Width = 59
@@ -74,7 +73,7 @@ inherited frmLoRaSource: TfrmLoRaSource
       Alignment = taRightJustify
       Caption = 'Packet SNR:'
     end
-    object Label12: TLabel [11]
+    object Label12: TLabel [10]
       Left = 476
       Top = 145
       Width = 82
@@ -87,38 +86,54 @@ inherited frmLoRaSource: TfrmLoRaSource
       Caption = 'Frequency Error:'
     end
     inherited pnlConnected: TPanel
-      Left = 351
+      Left = 343
       Top = 16
-      ExplicitLeft = 351
+      ExplicitLeft = 343
       ExplicitTop = 16
     end
     inherited Panel1: TPanel
+      Top = 180
       Width = 563
-      Height = 210
-      ExplicitWidth = 417
-      ExplicitHeight = 210
+      Height = 213
+      ExplicitTop = 180
+      ExplicitWidth = 563
+      ExplicitHeight = 213
       inherited ListBox1: TListBox
         Width = 561
-        Height = 208
-        ExplicitWidth = 415
-        ExplicitHeight = 208
+        Height = 211
+        ExplicitWidth = 553
+        ExplicitHeight = 200
       end
     end
     inherited pnlTime: TPanel
-      Left = 350
+      Left = 342
       Top = 57
-      ExplicitLeft = 350
+      ExplicitLeft = 342
       ExplicitTop = 57
     end
     inherited pnlLongitude: TPanel
-      Left = 350
+      Left = 342
       Top = 97
-      ExplicitLeft = 350
+      ExplicitLeft = 342
       ExplicitTop = 97
     end
     object pnlCurrentRSSI: TPanel
-      Left = 563
-      Top = 17
+      Left = 562
+      Top = 16
+      Width = 121
+      Height = 28
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
+      BevelOuter = bvLowered
+      Color = clSilver
+      ParentBackground = False
+      TabOrder = 7
+    end
+    object pnlPacketRSSI: TPanel
+      Left = 562
+      Top = 57
       Width = 121
       Height = 28
       Margins.Left = 2
@@ -130,22 +145,8 @@ inherited frmLoRaSource: TfrmLoRaSource
       ParentBackground = False
       TabOrder = 8
     end
-    object pnlPacketRSSI: TPanel
-      Left = 562
-      Top = 57
-      Width = 120
-      Height = 28
-      Margins.Left = 2
-      Margins.Top = 2
-      Margins.Right = 2
-      Margins.Bottom = 2
-      BevelOuter = bvLowered
-      Color = clSilver
-      ParentBackground = False
-      TabOrder = 9
-    end
     object pnlPacketSNR: TPanel
-      Left = 563
+      Left = 562
       Top = 97
       Width = 121
       Height = 28
@@ -156,12 +157,12 @@ inherited frmLoRaSource: TfrmLoRaSource
       BevelOuter = bvLowered
       Color = clSilver
       ParentBackground = False
-      TabOrder = 10
+      TabOrder = 9
     end
     object pnlFrequencyError: TPanel
       Left = 562
       Top = 138
-      Width = 120
+      Width = 121
       Height = 28
       Margins.Left = 2
       Margins.Top = 2
@@ -170,7 +171,7 @@ inherited frmLoRaSource: TfrmLoRaSource
       BevelOuter = bvLowered
       Color = clSilver
       ParentBackground = False
-      TabOrder = 11
+      TabOrder = 10
     end
   end
 end

@@ -81,6 +81,8 @@
 			<DCCReference Include="HabitatSourceForm.pas">
 				<Form>frmHabitatSource</Form>
 			</DCCReference>
+			<DCCReference Include="HABRx\Habitat.pas"/>
+			<DCCReference Include="HABRx\HABTypes.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
