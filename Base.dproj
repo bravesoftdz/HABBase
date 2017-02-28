@@ -48,8 +48,8 @@
 			<DCCReference Include="HABRx\LoRaGatewaySource.pas"/>
 			<DCCReference Include="HABRx\DLFlDigiSource.pas"/>
 			<DCCReference Include="HABRx\HabitatSource.pas"/>
-			<DCCReference Include="SourceForm.pas">
-				<Form>frmSource</Form>
+			<DCCReference Include="PayloadForm.pas">
+				<Form>frmPayload</Form>
 			</DCCReference>
 			<DCCReference Include="LoRaGatewaySourceForm.pas">
 				<Form>frmLoRaGatewaySource</Form>
@@ -83,6 +83,9 @@
 			</DCCReference>
 			<DCCReference Include="HABRx\Habitat.pas"/>
 			<DCCReference Include="HABRx\HABTypes.pas"/>
+			<DCCReference Include="SourceForm.pas">
+				<Form>frmSource</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

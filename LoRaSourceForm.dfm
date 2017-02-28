@@ -20,19 +20,19 @@ inherited frmLoRaSource: TfrmLoRaSource
       412)
     FullHeight = 337
     inherited Label3: TLabel
-      Left = 283
+      Left = 279
       Top = 23
       ExplicitLeft = 291
       ExplicitTop = 23
     end
     inherited Label5: TLabel
-      Left = 312
+      Left = 308
       Top = 64
       ExplicitLeft = 320
       ExplicitTop = 64
     end
     inherited Label7: TLabel
-      Left = 288
+      Left = 284
       Top = 104
       ExplicitLeft = 296
       ExplicitTop = 104
@@ -86,35 +86,36 @@ inherited frmLoRaSource: TfrmLoRaSource
       Caption = 'Frequency Error:'
     end
     inherited pnlConnected: TPanel
-      Left = 343
+      Left = 339
       Top = 16
-      ExplicitLeft = 343
+      ExplicitLeft = 339
       ExplicitTop = 16
     end
     inherited Panel1: TPanel
       Top = 180
-      Width = 563
-      Height = 213
+      Width = 559
+      Height = 209
       ExplicitTop = 180
-      ExplicitWidth = 563
-      ExplicitHeight = 213
+      ExplicitWidth = 559
+      ExplicitHeight = 209
       inherited ListBox1: TListBox
-        Width = 561
-        Height = 211
-        ExplicitWidth = 553
-        ExplicitHeight = 200
+        Width = 557
+        Height = 207
+        ExplicitTop = 0
+        ExplicitWidth = 557
+        ExplicitHeight = 207
       end
     end
     inherited pnlTime: TPanel
-      Left = 342
+      Left = 338
       Top = 57
-      ExplicitLeft = 342
+      ExplicitLeft = 338
       ExplicitTop = 57
     end
     inherited pnlLongitude: TPanel
-      Left = 342
+      Left = 338
       Top = 97
-      ExplicitLeft = 342
+      ExplicitLeft = 338
       ExplicitTop = 97
     end
     object pnlCurrentRSSI: TPanel

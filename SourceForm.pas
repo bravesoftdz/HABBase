@@ -31,6 +31,7 @@ type
     pnlLatitude: TPanel;
     pnlLongitude: TPanel;
     pnlAltitude: TPanel;
+    VrMediaButton1: TVrMediaButton;
     procedure btnPlayClick(Sender: TObject);
     procedure btnPauseClick(Sender: TObject);
     procedure AdvSmoothButton1Click(Sender: TObject);
@@ -52,6 +53,8 @@ type
 implementation
 
 {$R *.dfm}
+
+uses Main;
 
 procedure TfrmSource.AdvSmoothButton1Click(Sender: TObject);
 begin
@@ -76,12 +79,16 @@ begin
 
     // Position
     if Position.InUse then begin
+        // Update this form
         pnlPayloadID.Caption := Position.PayloadID;
         pnlTime.Caption := FormatDateTime('hh:mm:ss', Position.TimeStamp);
         pnlLatitude.Caption := FormatFloat('0.00000', Position.Latitude);
         pnlLongitude.Caption := FormatFloat('0.00000', Position.Longitude);
         pnlAltitude.Caption := FormatFloat('0', Position.Altitude);
         ListBox1.ItemIndex := ListBox1.Items.Add(IntToStr(ID) + ': ' + Line);
+
+        // Update payload form
+        frmMain.AddPayloadPosition(Position);
     end;
 end;
 

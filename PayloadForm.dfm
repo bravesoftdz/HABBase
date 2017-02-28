@@ -1,8 +1,8 @@
-object frmSource: TfrmSource
+object frmPayload: TfrmPayload
   Left = 0
   Top = 0
   BorderIcons = []
-  Caption = 'frmSource'
+  Caption = 'Payload'
   ClientHeight = 454
   ClientWidth = 559
   Color = clBtnFace
@@ -59,50 +59,6 @@ object frmSource: TfrmSource
       TabOrder = 0
       Version = '2.0.2.0'
       OnClick = AdvSmoothButton1Click
-    end
-    object btnSettings: TVrMediaButton
-      Left = 8
-      Top = 5
-      Width = 40
-      Height = 29
-      ButtonType = btEject
-      TabOrder = 1
-    end
-    object btnPlay: TVrMediaButton
-      Left = 48
-      Top = 5
-      Width = 40
-      Height = 29
-      ButtonType = btPlay
-      Enabled = False
-      TabOrder = 2
-      OnClick = btnPlayClick
-    end
-    object btnPause: TVrMediaButton
-      Left = 88
-      Top = 5
-      Width = 40
-      Height = 29
-      TabOrder = 3
-      OnClick = btnPauseClick
-    end
-    object btnClearLog: TVrMediaButton
-      Left = 128
-      Top = 5
-      Width = 40
-      Height = 29
-      ButtonType = btPower
-      TabOrder = 4
-      OnClick = btnClearLogClick
-    end
-    object VrMediaButton1: TVrMediaButton
-      Left = 168
-      Top = 5
-      Width = 40
-      Height = 29
-      ButtonType = btRecord
-      TabOrder = 5
-      OnClick = btnClearLogClick
     end
   end
   object pnlStatus: TAdvPanel
@@ -172,9 +128,9 @@ object frmSource: TfrmSource
       Caption = 'Recent History:'
     end
     object Label3: TLabel
-      Left = 338
+      Left = 296
       Top = 24
-      Width = 56
+      Width = 98
       Height = 13
       Margins.Left = 2
       Margins.Top = 2
@@ -182,8 +138,7 @@ object frmSource: TfrmSource
       Margins.Bottom = 2
       Alignment = taRightJustify
       Anchors = [akTop, akRight]
-      Caption = 'Connected:'
-      ExplicitLeft = 354
+      Caption = 'Time Since Position::'
     end
     object Label4: TLabel
       Left = 46
@@ -249,7 +204,7 @@ object frmSource: TfrmSource
       Alignment = taRightJustify
       Caption = 'Altitude:'
     end
-    object pnlConnected: TPanel
+    object pnlTimeSincePosition: TPanel
       Left = 407
       Top = 17
       Width = 121

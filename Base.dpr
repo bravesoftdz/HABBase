@@ -7,7 +7,7 @@ uses
   LoRaGatewaySource in 'HABRx\LoRaGatewaySource.pas',
   DLFlDigiSource in 'HABRx\DLFlDigiSource.pas',
   HabitatSource in 'HABRx\HabitatSource.pas',
-  SourceForm in 'SourceForm.pas' {frmSource},
+  PayloadForm in 'PayloadForm.pas' {frmPayload},
   LoRaGatewaySourceForm in 'LoRaGatewaySourceForm.pas' {frmLoRaGatewaySource},
   SourceSettings in 'SourceSettings.pas' {frmSourceSettings},
   LoRaGatewaySourceSettings in 'LoRaGatewaySourceSettings.pas' {frmGatewaySourceSettings},
@@ -23,7 +23,8 @@ uses
   WebSourceForm in 'WebSourceForm.pas' {frmWebSource},
   HabitatSourceForm in 'HabitatSourceForm.pas' {frmHabitatSource},
   Habitat in 'HABRx\Habitat.pas',
-  HABTypes in 'HABRx\HABTypes.pas';
+  HABTypes in 'HABRx\HABTypes.pas',
+  SourceForm in 'SourceForm.pas' {frmSource};
 
 {$R *.res}
 

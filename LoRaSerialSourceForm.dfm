@@ -6,45 +6,52 @@ inherited frmLoRaSerialSource: TfrmLoRaSerialSource
   TextHeight = 13
   inherited pnlButtons: TPanel
     Width = 710
-    ExplicitWidth = 714
+    ExplicitWidth = 710
     inherited AdvSmoothButton1: TAdvSmoothButton
       Left = 626
-      ExplicitLeft = 630
+      ExplicitLeft = 626
     end
   end
   inherited pnlStatus: TAdvPanel
     Width = 710
-    ExplicitWidth = 714
+    ExplicitWidth = 710
     FullHeight = 337
     inherited Label3: TLabel
-      Left = 280
+      Left = 276
       ExplicitLeft = 288
     end
     inherited Label5: TLabel
-      Left = 310
+      Left = 306
       ExplicitLeft = 318
     end
     inherited Label7: TLabel
-      Left = 286
+      Left = 282
       ExplicitLeft = 294
     end
     inherited pnlConnected: TPanel
-      Left = 349
-      ExplicitLeft = 353
+      Left = 345
+      ExplicitLeft = 345
     end
     inherited Panel1: TPanel
+      Width = 555
+      Height = 205
+      ExplicitWidth = 555
+      ExplicitHeight = 205
       inherited ListBox1: TListBox
-        ExplicitWidth = 558
-        ExplicitHeight = 196
+        Width = 553
+        Height = 203
+        ExplicitTop = 1
+        ExplicitWidth = 553
+        ExplicitHeight = 203
       end
     end
     inherited pnlTime: TPanel
-      Left = 348
-      ExplicitLeft = 352
+      Left = 344
+      ExplicitLeft = 344
     end
     inherited pnlLongitude: TPanel
-      Left = 348
-      ExplicitLeft = 352
+      Left = 344
+      ExplicitLeft = 344
     end
   end
 end

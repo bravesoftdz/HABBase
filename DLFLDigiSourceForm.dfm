@@ -10,37 +10,40 @@ inherited frmDLFLDigiSource: TfrmDLFLDigiSource
   inherited pnlStatus: TAdvPanel
     FullHeight = 337
     inherited Label3: TLabel
-      Left = 338
+      Left = 334
       ExplicitLeft = 346
     end
     inherited Label5: TLabel
-      Left = 368
+      Left = 364
       ExplicitLeft = 376
     end
     inherited Label7: TLabel
-      Left = 344
+      Left = 340
       ExplicitLeft = 352
     end
     inherited pnlConnected: TPanel
-      Left = 407
+      Left = 403
+      ExplicitLeft = 403
     end
     inherited Panel1: TPanel
-      Width = 409
-      Height = 253
-      ExplicitWidth = 409
-      ExplicitHeight = 253
+      Width = 405
+      Height = 249
+      ExplicitWidth = 405
+      ExplicitHeight = 249
       inherited ListBox1: TListBox
-        Width = 407
-        Height = 251
-        ExplicitWidth = 407
-        ExplicitHeight = 200
+        Width = 403
+        Height = 247
+        ExplicitWidth = 403
+        ExplicitHeight = 247
       end
     end
     inherited pnlTime: TPanel
-      Left = 406
+      Left = 402
+      ExplicitLeft = 402
     end
     inherited pnlLongitude: TPanel
-      Left = 406
+      Left = 402
+      ExplicitLeft = 402
     end
   end
 end

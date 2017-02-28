@@ -2,8 +2,8 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'HAB Base Station'
-  ClientHeight = 711
-  ClientWidth = 1030
+  ClientHeight = 805
+  ClientWidth = 1209
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,8 +18,8 @@ object frmMain: TfrmMain
   TextHeight = 13
   object pnlStatus: TAdvPanel
     Left = 0
-    Top = 669
-    Width = 1030
+    Top = 763
+    Width = 1209
     Height = 42
     Align = alBottom
     BevelOuter = bvNone
@@ -61,12 +61,14 @@ object frmMain: TfrmMain
     StatusBar.Font.Style = []
     StatusBar.Color = 12560553
     StatusBar.ColorTo = 14602191
+    ExplicitTop = 669
+    ExplicitWidth = 1030
     FullHeight = 42
   end
   object AdvPanel1: TAdvPanel
     Left = 0
     Top = 0
-    Width = 1030
+    Width = 1209
     Height = 85
     Align = alTop
     BevelOuter = bvNone
@@ -107,10 +109,11 @@ object frmMain: TfrmMain
     StatusBar.Font.Style = []
     StatusBar.Color = 12560553
     StatusBar.ColorTo = 14602191
+    ExplicitWidth = 1030
     FullHeight = 0
     object Image1: TImage
       AlignWithMargins = True
-      Left = 957
+      Left = 1136
       Top = 3
       Width = 64
       Height = 79
